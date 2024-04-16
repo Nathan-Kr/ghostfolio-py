@@ -97,6 +97,19 @@ class Ghostfolio:
     def accounts(self) -> dict:
         return self._get("account")
 
+    def create_account(self, name: str, balance: int = 0, currency: str = "USD", comment: str | None = None,
+                       is_excluded: bool = False, platform_id: str | None = None):
+        """Create an account."""
+        self._post("account",
+                   {
+                       "balance": balance,
+                       "currency": currency,
+                       "name": name,
+                       "comment": comment,
+                       "isExcluded": is_excluded,
+                       "platformId": platform_id,
+                   })
+
     def market_data_admin(self) -> dict:
         """Overview of market data loaded"""
         return self._get("admin/market-data")
