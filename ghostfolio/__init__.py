@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 import requests
 from requests.exceptions import HTTPError
 
+from structures.activities import Activity
+
 
 class Ghostfolio:
     """Ghostfolio API client."""
@@ -74,9 +76,9 @@ class Ghostfolio:
         """Get position for a symbol from a data source."""
         return self._get(f"portfolio/position/{data_source}/{symbol}")
 
-    def import_transactions(self, data: dict):
+    def import_transactions(self, activities: list[Activity]):
         """Import transactions."""
-        self._post("import", data)
+        self._post("import", {"activities": activities})
 
     def details(self) -> dict:
         """Get all details, including accounts, positions, and summary."""
