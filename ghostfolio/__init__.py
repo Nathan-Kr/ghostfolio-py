@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import requests
 from requests.exceptions import HTTPError
 
-from structures.activities import Activity
+from .structures.activities import Activity
 
 
 class Ghostfolio:
